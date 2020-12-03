@@ -9,7 +9,7 @@ function processData() {
             return err;
         var itemArray = file.toString().split("\n");
         console.log(countValid1(itemArray)); // 454 valid
-        console.log(countValid2(itemArray));
+        console.log(countValid2(itemArray)); // 649 valid
     });
 }
 function countValid1(passwordData) {
@@ -47,7 +47,6 @@ function countValid2(passwordData) {
         var location2 = parseInt(locations[1]) - 1;
         var requiredLetter = itemArray[1][0];
         var password = itemArray[2];
-        console.log(password, password[location1]);
         if (password[location1] === requiredLetter) {
             password[location2] !== requiredLetter ? valid++ : null;
         }
