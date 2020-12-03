@@ -48,9 +48,11 @@ function countValid2(passwordData) {
         var requiredLetter = itemArray[1][0];
         var password = itemArray[2];
         console.log(password, password[location1]);
-        if (password[location1] === requiredLetter || password[location2] === requiredLetter) {
-            console.log(password, location1, location2, locations);
-            valid++;
+        if (password[location1] === requiredLetter) {
+            password[location2] !== requiredLetter ? valid++ : null;
+        }
+        else if (password[location2] === requiredLetter) {
+            password[location1] !== requiredLetter ? valid++ : null;
         }
     });
     return valid;
