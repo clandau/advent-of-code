@@ -7,15 +7,21 @@ function processInput(path: string) {
     if (err) return err;
     const inputArray = file.toString().split("\n");
     console.log(tobogganTrajectory1(inputArray));
+    console.log(tobogganTrajectory2(inputArray));
   });
 }
 
 function tobogganTrajectory1(pattern: string[]) {
-  const iLength = pattern[0].length;
   const RIGHT = 3;
   const DOWN = 1;
-  let i = DOWN;
-  let j = RIGHT;
+
+  return countTrees(pattern, RIGHT, DOWN);
+}
+
+function countTrees(pattern: string[], right: number, down: number) {
+  const iLength = pattern[0].length;
+  let i = down;
+  let j = right;
 
   let treeCount = 0;
 
@@ -23,8 +29,8 @@ function tobogganTrajectory1(pattern: string[]) {
     if (isTree(pattern[i][j])) {
       treeCount++;
     }
-    j = (j + RIGHT) % iLength;
-    i += DOWN;
+    j = (j + right) % iLength;
+    i += down;
   }
   return treeCount;
 }
@@ -34,7 +40,20 @@ function isTree(char: string): boolean {
   return char === TREE;
 }
 
-processInput(inputPath);
+function tobogganTrajectory2(pattern: string[]) {
+  const SLOPES = [
+    { Right: 1, Down: 1 },
+    { Right: 5, Down: 1 },
+    { Right: 7, Down: 1 },
+    { Right: 1, Down: 2 },
+  ];
+  let countProduct = 167;
+  for (let slope of SLOPES) {
+    countProduct *= countTrees(pattern, slope.Right, slope.Down);
+  }
+  return countProduct;
+}
 
+processInput(inputPath);
 
 export {};
