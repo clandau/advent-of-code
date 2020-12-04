@@ -8,26 +8,29 @@ function processInput(path) {
         if (err)
             return err;
         var inputArray = file.toString().split("\n");
-        console.log(tobogganTrajectory1(inputArray));
-        console.log(tobogganTrajectory2(inputArray));
+        console.log(tobogganTrajectory1(inputArray)); // 167
+        console.log(tobogganTrajectory2(inputArray)); // 736527114
     });
 }
 function tobogganTrajectory1(pattern) {
-    var iLength = pattern[0].length;
     var RIGHT = 3;
     var DOWN = 1;
-    // let i = DOWN;
-    // let j = RIGHT;
     return countTrees(pattern, RIGHT, DOWN);
-    // let treeCount = 0;
-    // while (i < pattern.length) {
-    //   if (isTree(pattern[i][j])) {
-    //     treeCount++;
-    //   }
-    //   j = (j + RIGHT) % iLength;
-    //   i += DOWN;
-    // }
-    // return treeCount;
+}
+function tobogganTrajectory2(pattern) {
+    var SLOPES = [
+        { Right: 1, Down: 1 },
+        { Right: 5, Down: 1 },
+        { Right: 7, Down: 1 },
+        { Right: 1, Down: 2 },
+    ];
+    // getting the initial value from Part 1 and not re-running it
+    var countProduct = 167;
+    for (var _i = 0, SLOPES_1 = SLOPES; _i < SLOPES_1.length; _i++) {
+        var slope = SLOPES_1[_i];
+        countProduct *= countTrees(pattern, slope.Right, slope.Down);
+    }
+    return countProduct;
 }
 function countTrees(pattern, right, down) {
     var iLength = pattern[0].length;
@@ -44,16 +47,6 @@ function countTrees(pattern, right, down) {
     return treeCount;
 }
 function isTree(char) {
-    var TREE = "#";
-    return char === TREE;
-}
-function tobogganTrajectory2(pattern) {
-    var SLOPES = [{ "Right": 1, "Down": 1 }, { "Right": 5, "Down": 1 }, { "Right": 7, "Down": 1 }, { "Right": 1, "Down": 2 }];
-    var countProduct = 167;
-    for (var _i = 0, SLOPES_1 = SLOPES; _i < SLOPES_1.length; _i++) {
-        var slope = SLOPES_1[_i];
-        countProduct *= countTrees(pattern, slope.Right, slope.Down);
-    }
-    return countProduct;
+    return char === "#";
 }
 processInput(inputPath);
