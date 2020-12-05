@@ -1,14 +1,25 @@
 const fs = require("fs");
-const data = fs
-    .readFileSync("./day5/input.txt", "utf-8")
-    .split("\n");
+const data = fs.readFileSync("./day5/input.txt", "utf-8").split("\n");
 function binaryBoardingPart1(boardingPasses) {
     let highest = -1;
     for (let pass of boardingPasses) {
         const seatNumber = findSeat(pass);
-        seatNumber > highest ? highest = seatNumber : null;
+        seatNumber > highest ? (highest = seatNumber) : null;
     }
     return highest;
+}
+function binaryBoardingPart2(boardingPasses) {
+    let passes = [];
+    for (let pass of boardingPasses) {
+        passes.push(findSeat(pass));
+    }
+    passes.sort((a, b) => a - b);
+    for (let i = 1; i < passes.length; i++) {
+        if (passes[i] - passes[i - 1] !== 1) {
+            return passes[i] - 1;
+        }
+    }
+    return -1;
 }
 function findSeat(seatAssignment) {
     const rowDirections = seatAssignment.slice(0, 7);
@@ -32,5 +43,5 @@ function seatNumber(directions, lowerValue, upperValue, total) {
     }
     return current;
 }
-// console.log(findSeat("BBFFBBFRLL"))
 console.log(binaryBoardingPart1(data)); // 996
+console.log(binaryBoardingPart2(data)); // 996
