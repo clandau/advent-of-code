@@ -73,8 +73,8 @@ function HandyHaversacks2(rules) {
             return countTotalBags(key, bagCollection[item][key] * numberOfItems);
         });
     }
-    console.log(countTotalBags("shiny gold"));
+    countTotalBags("shiny gold");
     return totalCount - 1;
 }
 // console.log(`Part 1: ${HandyHaversacks1(DATA)}`); // Part 1: 257
-console.log("Part 2: " + HandyHaversacks2(DATA));
+console.log("Part 2: " + HandyHaversacks2(DATA)); // Part 2: 1038
