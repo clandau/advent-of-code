@@ -44,8 +44,64 @@ function rainRisk1(directions) {
         var value = parseInt(direction.slice(1));
         instructions[instruction](value);
     }
-    console.log("current diretion " + currentDirection);
-    console.log(currentLocation);
     return Math.abs(currentLocation.NS) + Math.abs(currentLocation.EW);
 }
-console.log("Part 1: " + rainRisk1(data));
+function rainRisk2(directions) {
+    var shipLocation = { NS: 0, EW: 0 };
+    var waypointLocation = { NS: 1, EW: 10 };
+    var instructions = {
+        N: function (v) {
+            waypointLocation.NS = waypointLocation.NS + v;
+        },
+        S: function (v) {
+            waypointLocation.NS = waypointLocation.NS - v;
+        },
+        E: function (v) {
+            waypointLocation.EW = waypointLocation.EW + v;
+        },
+        W: function (v) {
+            waypointLocation.EW = waypointLocation.EW - v;
+        },
+        L: function (v) {
+            var numberOfMoves = (360 - v) / 90;
+            var northSouth = waypointLocation.NS;
+            var eastWest = waypointLocation.EW;
+            while (numberOfMoves > 0) {
+                var temp = northSouth;
+                northSouth = -eastWest;
+                eastWest = temp;
+                numberOfMoves--;
+            }
+            waypointLocation.EW = eastWest;
+            waypointLocation.NS = northSouth;
+        },
+        R: function (v) {
+            var numberOfMoves = v / 90;
+            var northSouth = waypointLocation.NS;
+            var eastWest = waypointLocation.EW;
+            while (numberOfMoves > 0) {
+                var temp = northSouth;
+                northSouth = -eastWest;
+                eastWest = temp;
+                numberOfMoves--;
+            }
+            waypointLocation.EW = eastWest;
+            waypointLocation.NS = northSouth;
+        },
+        F: function (v) {
+            var ns = waypointLocation.NS * v;
+            var ew = waypointLocation.EW * v;
+            shipLocation.NS += ns;
+            shipLocation.EW += ew;
+        }
+    };
+    for (var _i = 0, directions_2 = directions; _i < directions_2.length; _i++) {
+        var direction = directions_2[_i];
+        var instruction = direction[0];
+        var value = parseInt(direction.slice(1));
+        instructions[instruction](value);
+    }
+    return Math.abs(shipLocation.NS) + Math.abs(shipLocation.EW);
+}
+console.log("Part 1: " + rainRisk1(data)); // 
+console.log("Part 2: " + rainRisk2(data)); // Part 2: 20592
