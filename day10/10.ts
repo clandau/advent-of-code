@@ -1,5 +1,4 @@
 const fs = require("fs");
-// const testData = fs.readFileSync("./day10/testInput.txt", "utf-8").split("\n");
 const data = fs.readFileSync("./day10/input.txt", "utf-8").split("\n");
 
 const sortedNumbers = (data: string[]) => data.sort((a, b) => {
