@@ -1,5 +1,4 @@
 const fs = require("fs");
-const testData = fs.readFileSync("./day12/testInput.txt", "utf-8").split("\n");
 const data = fs.readFileSync("./day12/input.txt", "utf-8").split("\n");
 
 type location = {

@@ -1,7 +1,6 @@
 "use strict";
 exports.__esModule = true;
 var fs = require("fs");
-var testData = fs.readFileSync("./day12/testInput.txt", "utf-8").split("\n");
 var data = fs.readFileSync("./day12/input.txt", "utf-8").split("\n");
 // if turning right, iterate through starting at current
 // if left, subtract from 360 and do the same
@@ -103,5 +102,5 @@ function rainRisk2(directions) {
     }
     return Math.abs(shipLocation.NS) + Math.abs(shipLocation.EW);
 }
-console.log("Part 1: " + rainRisk1(data)); // 
+console.log("Part 1: " + rainRisk1(data)); // Part 1: 1294
 console.log("Part 2: " + rainRisk2(data)); // Part 2: 20592
