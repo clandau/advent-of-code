@@ -46,5 +46,5 @@ function RambunctiousRecitation2(input: number[]) {
 
 console.time()
 // console.log(`Part 1: ${RambunctiousRecitation1(input)}`); // Part 1: 441
-console.log(`Part 2: ${RambunctiousRecitation2(input)}`); // Part 2: 10613991
+console.log(`Part 2: ${RambunctiousRecitation2(input)}`); // Part 2: 10613991 868.277ms
 console.timeEnd();
