@@ -9,7 +9,9 @@ function IMS1(boxes: string[]) {
   for (let box of boxes) {
     const numberCountHolder: any = {};
     for (let item of box) {
-      numberCountHolder[item] ? numberCountHolder[item]++ : numberCountHolder[item] = 1;
+      numberCountHolder[item]
+        ? numberCountHolder[item]++
+        : (numberCountHolder[item] = 1);
     }
     const vals = Object.values(numberCountHolder);
     if (vals.indexOf(2) > -1) twiceCount++;
@@ -19,9 +21,34 @@ function IMS1(boxes: string[]) {
 }
 
 function IMS2(boxes: string[]) {
+  let a = 0;
+  let b = 0;
+  let item1 = boxes[a];
+  let item2 = boxes[b];
+  while (a < boxes.length - 1) {
+    while (b < boxes.length) {
+      let differentLetterLocations = [];
 
+      for (let i = 0; i < item1.length; i++) {
+        if (item1[i] !== item2[i]) {
+          differentLetterLocations.push(i);
+        }
+      }
+      if (differentLetterLocations.length === 1) {
+        let sub1 = item1.substring(0, differentLetterLocations[0]);
+        let sub2 = item1.substring(differentLetterLocations[0] + 1);
+        return sub1 + sub2;
+      } else {
+        b++;
+        item2 = boxes[b];
+      }
+    }
+    a++;
+    b = a + 1;
+    item1 = boxes[a];
+    item2 = boxes[b];
+  }
 }
 
-
-console.log(`Part 1: ${IMS1(data)}`);
-console.log(`Part 2: ${IMS1(sampleData)}`);
+console.log(`Part 1: ${IMS1(data)}`);  // Part 1: 5434
+console.log(`Part 2: ${IMS2(data)}`);  // Part 2: agimdjvlhedpsyoqfzuknpjwt
