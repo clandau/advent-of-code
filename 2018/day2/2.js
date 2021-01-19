@@ -1,6 +1,5 @@
 const fs = require("fs");
 const data = fs.readFileSync("./day2/input.txt", "utf-8").split("\n");
-const sampleData = fs.readFileSync("./day2/testInput.txt", "utf-8").split("\n");
 function IMS1(boxes) {
     let twiceCount = 0;
     let thriceCount = 0;
@@ -48,5 +47,5 @@ function IMS2(boxes) {
         item2 = boxes[b];
     }
 }
-console.log(`Part 1: ${IMS1(data)}`);
-console.log(`Part 2: ${IMS2(data)}`);
+console.log(`Part 1: ${IMS1(data)}`); // Part 1: 5434
+console.log(`Part 2: ${IMS2(data)}`); // Part 2: agimdjvlhedpsyoqfzuknpjwt
