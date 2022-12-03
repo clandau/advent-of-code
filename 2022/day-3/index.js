@@ -1,8 +1,8 @@
 import { parseData } from "../index.js";
 
-const data = parseData("day-3/input.txt");
 
-function puzzle1(data) {
+function puzzle1() {
+  const data = parseData("day-3/input.txt");
   let prioritiesTotal = 0;
 
   for (const sack of data) {
@@ -25,7 +25,8 @@ function puzzle1(data) {
   return prioritiesTotal;
 }
 
-function puzzle2(data) {
+function puzzle2() {
+  const data = parseData("day-3/input.txt");
   let prioritiesTotal = 0;
 
   while (data.length) {
@@ -62,5 +63,5 @@ function priorityFromCharCode(charCode) {
     : charCode - lowerCaseOffset;
 }
 
-console.log(`Puzzle 1: ${puzzle1(data)}`);
-console.log(`Puzzle 2: ${puzzle2(data)}`);
+console.log(`Puzzle 1: ${puzzle1()}`);
+console.log(`Puzzle 2: ${puzzle2()}`);
