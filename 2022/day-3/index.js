@@ -1,4 +1,4 @@
-import { parseData } from "../index.js";
+import { parseData } from "../helpers";
 
 
 function puzzle1() {
