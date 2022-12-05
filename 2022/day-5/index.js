@@ -34,7 +34,7 @@ function puzzle1(data) {
 
   for (const move of moves) {
     const moveDirections = move.split(" ");
-    let quantity = parseInt(moveDirections[1]);
+    const quantity = parseInt(moveDirections[1]);
     const startIndex = parseInt(moveDirections[3]) - 1;
     const endIndex = parseInt(moveDirections[5]) - 1;
 
@@ -50,7 +50,7 @@ function puzzle2(data) {
 
   for (const move of moves) {
     const moveDirections = move.split(" ");
-    let quantity = parseInt(moveDirections[1]);
+    const quantity = parseInt(moveDirections[1]);
     const startIndex = parseInt(moveDirections[3]) - 1;
     const endIndex = parseInt(moveDirections[5]) - 1;
 
